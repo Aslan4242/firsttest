@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
-public class InputTravelerDataPage extends BasePage{
+public class InputTravelerDataPage {
 
     @FindBy(xpath = "//div[contains(text(),'35')]")
     public WebElement minSumButton;
@@ -14,10 +17,7 @@ public class InputTravelerDataPage extends BasePage{
     public WebElement processingButton;
 
 
-    public InputTravelerDataPage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
+
 
     @FindBy(xpath = "//div[contains(@ng-class,'_surname')]/input")
     public WebElement surnameField;
@@ -48,10 +48,15 @@ public class InputTravelerDataPage extends BasePage{
     @FindBy(xpath = "//div[contains(@class,'b-form-center-pos b-form-error-message')]/div[contains(@ng-show,'invalid')]")
     public WebElement error;
 
+    public InputTravelerDataPage(){
+        PageFactory.initElements(BaseSteps.getDriver(), this);
+        (new WebDriverWait(BaseSteps.getDriver(), 10))
+                .until(ExpectedConditions.visibilityOf(minSumButton));
+    }
 
     public void fillField(String fieldName, String value){
         switch (fieldName){
-            case  "Фамилия":
+           /* case  "Фамилия":
                 fillField(surnameField, value);
                 break;
             case  "Имя":
@@ -89,7 +94,7 @@ public class InputTravelerDataPage extends BasePage{
                 break;
             case  "Ошибка":
                 fillField(error, value);
-                break;
+                break;*/
             default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
         }
     }

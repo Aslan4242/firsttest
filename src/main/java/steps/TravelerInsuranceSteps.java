@@ -3,10 +3,10 @@ package steps;
 import pages.TravelerInsurancePage;
 import ru.yandex.qatools.allure.annotations.Step;
 
-public class TravelerInsuranceSteps extends BaseSteps {
+public class TravelerInsuranceSteps {
 
     @Step("выполнено нажатие на кнопку - Оформить полис")
     public void stepProcessPolicyBtn(){
-        new TravelerInsurancePage(driver).button.click();
+        new TravelerInsurancePage().button.click();
     }
 }

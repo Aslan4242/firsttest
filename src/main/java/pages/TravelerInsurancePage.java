@@ -8,8 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import steps.BaseSteps;
 
-public class TravelerInsurancePage extends BasePage {
+public class TravelerInsurancePage {
 
     @FindBy(xpath = "//div[contains(@class,'sbrf-rich-outer')]/h1")
     public WebElement title;
@@ -17,14 +18,14 @@ public class TravelerInsurancePage extends BasePage {
     @FindBy(xpath = "//a[@target]//img[contains(@src,'portal')]")
     public WebElement button;
 
-    public TravelerInsurancePage(WebDriver driver){
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+
+    public TravelerInsurancePage() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
     }
 
     public void waitButtonClickable(){
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
+        Wait<WebDriver> wait = new WebDriverWait(BaseSteps.getDriver(), 5, 1000);
         wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.xpath("//a[@target]//img[contains(@src,'portal')]")))).click();
+                BaseSteps.getDriver().findElement(By.xpath("//a[@target]//img[contains(@src,'portal')]")))).click();
     }
 }

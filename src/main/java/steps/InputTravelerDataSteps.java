@@ -7,20 +7,20 @@ import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.HashMap;
 
-public class InputTravelerDataSteps extends BaseSteps{
+public class InputTravelerDataSteps {
     @Step("выбрана минимальная сумма {0}")
     public  void stepMinSumBtn(){
-        new InputTravelerDataPage(driver).minSumButton.click();
+        new InputTravelerDataPage().minSumButton.click();
     }
 
     @Step("нажата кнопка 'Оформить' {0}")
     public  void stepProcessingBtn(){
-        new InputTravelerDataPage(driver).processingButton.click();
+        new InputTravelerDataPage().processingButton.click();
     }
 
     @Step("поле {0} заполнять значением {1}")
     public void stepFillField(String field, String value){
-        new InputTravelerDataPage(driver).fillField(field, value);
+        new InputTravelerDataPage().fillField(field, value);
     }
 
 
@@ -31,11 +31,11 @@ public class InputTravelerDataSteps extends BaseSteps{
 
     @Step("нажата кнопка 'Продолжить' {0}")
     public  void stepContinueBtn(){
-        new InputTravelerDataPage(driver).continueBtn.click();
+        new InputTravelerDataPage().continueBtn.click();
     }
     @Step("вывелась надпись об ошибке {0}")
     public  String stepError(){
-       String error =  new InputTravelerDataPage(driver).error.getText();
+       String error =  new InputTravelerDataPage().error.getText();
        return  error;
     }
 }
