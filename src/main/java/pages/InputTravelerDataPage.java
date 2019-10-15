@@ -51,12 +51,6 @@ public class InputTravelerDataPage extends BasePage{
 
     public void fillField(String fieldName, String value){
         switch (fieldName){
-            case  "Минимальная сумма":
-                fillField(minSumButton, value);
-                break;
-            case  "Оформить":
-                fillField(processingButton, value);
-                break;
             case  "Фамилия":
                 fillField(surnameField, value);
                 break;

@@ -14,7 +14,7 @@ public class InputTravelerDataSteps extends BaseSteps{
     }
 
     @Step("нажата кнопка 'Оформить' {0}")
-    public  void stepContinueBtn(){
+    public  void stepProcessingBtn(){
         new InputTravelerDataPage(driver).processingButton.click();
     }
 
@@ -29,4 +29,13 @@ public class InputTravelerDataSteps extends BaseSteps{
         fields.forEach(this::stepFillField);
     }
 
+    @Step("нажата кнопка 'Продолжить' {0}")
+    public  void stepContinueBtn(){
+        new InputTravelerDataPage(driver).continueBtn.click();
+    }
+    @Step("вывелась надпись об ошибке {0}")
+    public  String stepError(){
+       String error =  new InputTravelerDataPage(driver).error.getText();
+       return  error;
+    }
 }
