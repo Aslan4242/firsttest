@@ -1,8 +1,6 @@
 package steps;
 
-import org.openqa.selenium.WebElement;
 import pages.InputTravelerDataPage;
-import pages.MainPage;
 import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.HashMap;

@@ -1,7 +1,10 @@
 package steps;
 
 import cucumber.api.DataTable;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import java.util.ArrayList;
 
 public class ScenarioSteps {
 
@@ -26,9 +29,24 @@ public class ScenarioSteps {
         travelerInsuranceSteps.stepProcessPolicyBtn();
     }
 
-    @When("заполняются поля:")
-    public void stepFillFields(DataTable fields){
+    @When("^выполнен переход на другую страницу")
+    public void changePage(){
+        ArrayList<String> tabs2 = new ArrayList<>(BaseSteps.getDriver().getWindowHandles());
+        BaseSteps.getDriver().switchTo().window(tabs2.get(1));
+    }
+
+    @When("^выбрано минимальное значение и нажата кнопка оформить")
+    public void chooseOptions(){
+        inputTravelerDataSteps.stepMinSumBtn();
+        inputTravelerDataSteps.stepProcessingBtn();
+
+    }
+    @Then("^заполняются поля:")
+    public void stepFillField(DataTable fields){
+
         fields.asMap(String.class, String.class).forEach(
-                (key, value) -> inputTravelerDataSteps.stepFillField(key, value));
+                (key, value) -> {
+                    inputTravelerDataSteps.stepFillField(key, value);
+                });
     }
 }

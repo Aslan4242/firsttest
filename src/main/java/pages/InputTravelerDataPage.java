@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.BaseSteps;
 
-public class InputTravelerDataPage {
+public class InputTravelerDataPage extends BasePage {
+
+    @FindBy(xpath = "//div[@ng-show='!cbi']//h2[@ng-bind='prodTitle']")
+    public WebElement title;
 
     @FindBy(xpath = "//div[contains(text(),'35')]")
     public WebElement minSumButton;
@@ -51,12 +54,12 @@ public class InputTravelerDataPage {
     public InputTravelerDataPage(){
         PageFactory.initElements(BaseSteps.getDriver(), this);
         (new WebDriverWait(BaseSteps.getDriver(), 10))
-                .until(ExpectedConditions.visibilityOf(minSumButton));
+                .until(ExpectedConditions.visibilityOf(title));
     }
 
     public void fillField(String fieldName, String value){
         switch (fieldName){
-           /* case  "Фамилия":
+            case  "Фамилия":
                 fillField(surnameField, value);
                 break;
             case  "Имя":
@@ -94,7 +97,7 @@ public class InputTravelerDataPage {
                 break;
             case  "Ошибка":
                 fillField(error, value);
-                break;*/
+                break;
             default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
         }
     }
