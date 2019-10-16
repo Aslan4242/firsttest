@@ -23,6 +23,7 @@ public class BasePage {
     public void fillField(WebElement element, String value) {
         element.clear();
         element.sendKeys(value);
+
     }
 
     public void checkFillField(String value, WebElement element) {
