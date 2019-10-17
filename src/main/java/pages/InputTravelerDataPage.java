@@ -59,6 +59,7 @@ public class InputTravelerDataPage extends BasePage {
 
     public void fillField(String fieldName, String value){
         switch (fieldName){
+
             case  "Фамилия":
                 fillField(surnameField, value);
                 break;

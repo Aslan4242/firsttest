@@ -4,7 +4,7 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-import java.util.ArrayList;
+import static junit.framework.TestCase.assertEquals;
 
 public class ScenarioSteps {
 
@@ -24,6 +24,12 @@ public class ScenarioSteps {
         mainSteps.stepSelectSubMenu(menuItem);
     }
 
+    @Then("^выводится заголовок 'Страхование путешественников'")
+    public void travelInsuranceTitleStep(){
+        String titleText = travelerInsuranceSteps.stepTitleTravelInsurance();
+        assertEquals("Страхование путешественников",titleText);
+    }
+
     @When("^выполнено нажатие на кнопку - Отправить заявку")
     public void stepProcessBtn(){
         travelerInsuranceSteps.stepProcessPolicyBtn();
@@ -31,8 +37,7 @@ public class ScenarioSteps {
 
     @When("^выполнен переход на другую страницу")
     public void changePage(){
-        ArrayList<String> tabs2 = new ArrayList<>(BaseSteps.getDriver().getWindowHandles());
-        BaseSteps.getDriver().switchTo().window(tabs2.get(1));
+        BaseSteps.ChangePage();
     }
 
     @When("^выбрано минимальное значение и нажата кнопка оформить")
@@ -49,4 +54,17 @@ public class ScenarioSteps {
                     inputTravelerDataSteps.stepFillField(key, value);
                 });
     }
+
+    @When("^нажимается кнопка 'Продолжить'")
+    public void continueBtn(){
+        inputTravelerDataSteps.stepContinueBtn();
+    }
+
+
+    @Then("^выводится сообщение об ошибке 'Заполнены не все обязательные поля'")
+    public void error(){
+        String errorText = inputTravelerDataSteps.stepError();
+        assertEquals("Заполнены не все обязательные поля",errorText);
+    }
+
 }

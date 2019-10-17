@@ -9,4 +9,8 @@ public class TravelerInsuranceSteps {
     public void stepProcessPolicyBtn(){
         new TravelerInsurancePage().button.click();
     }
+    @Step("^получен текст заголовка")
+    public String stepTitleTravelInsurance(){
+       return  new TravelerInsurancePage().title.getText();
+    }
 }
